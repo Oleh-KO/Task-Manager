@@ -1,0 +1,24 @@
+<div class="container">
+
+  <header>
+    <div class="headerLogo">
+      <img class="ok" src="assets/images/ok.svg">
+    </div>
+    <p class="title">TASK MANAGER</p>
+    <div class="btnGroup">
+      <button type="button" class="btn register" (click)="openRegModal()">Create an Account</button>
+      <button type="button" class="btn login" (click)="openLogModal()">Log In</button>
+    </div>
+  </header>
+
+</div>
+
+<div class="modal" *ngIf="modalWindowLog">
+  <app-modallog></app-modallog>
+</div>
+<div class="modal" *ngIf="modalWindowReg">
+  <app-modalreg></app-modalreg>
+</div>
+<div *ngIf="main">
+  <app-main></app-main>
+</div>

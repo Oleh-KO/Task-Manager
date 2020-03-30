@@ -1,0 +1,14 @@
+<div class="backgroundSpace">
+  <div class="modal">
+    <p class="title">Create an Account</p>
+    <form [formGroup]="regForm">
+      <input type="text" formControlName="Username" placeholder="Username" required>
+      <input type="password" formControlName="Password" placeholder="Password" required>
+    </form>
+    <p class="error" *ngIf="error">Please fill all fields correctly</p>
+    <div class="btnGroup">
+      <button type="button" class="addToList" (click)="register()">Register</button>
+      <button type="button" class="close" (click)="closeModalReg()">Close</button>
+    </div>
+  </div>
+</div>

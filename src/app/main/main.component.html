@@ -1,0 +1,48 @@
+<div class="container">
+  <header>
+    <p class="title">TASK MANAGER</p>
+  </header>
+
+  <main>
+    <button class="add" type="button" (click)="addItem()">ADD</button>
+
+    <div class="content">
+      <div class="line" *ngFor="let item of itemArray let i = index">
+
+        <div class="flex-block" *ngIf="!item.edit && itemArray.length">
+          <div class="item index">{{i+1}}</div>
+          <div class="item content">{{item.task}}</div>
+          <div class="item content">{{item.date}}</div>
+          <div class="item content">{{item.description}}</div>
+        </div>
+
+        <form action="" *ngIf="item.edit" class="form" [formGroup]="editForm">
+          <div class="item index"><input type="text" value="{{i+1}}"></div>
+          <div class="item"><input type="text" formControlName="task" value="{{item.task}}"
+              placeholder="{{item.task}}"></div>
+          <div class="item"><input type="text" value="{{item.date}}" formControlName="date" placeholder="{{item.date}}">
+          </div>
+          <div class="item"><input type="text" value="{{item.description}}" formControlName="description"
+              placeholder="{{item.description}}"></div>
+        </form>
+
+        <div class="item btn-block">
+          <button type="button" class="btn edit" (click)="editItem(i)" *ngIf="!item.edit"> Edit</button>
+          <button type="button" class="btn edit" (click)="saveItem(i)" *ngIf="item.edit"> Save</button>
+          <button type="button" class="btn delete" (click)="deleteItem(i)">Delete</button>
+        </div>
+
+      </div>
+
+      <div class="text-center" *ngIf="!itemArray.length">
+        <p>NO TASKS, NO FUN!</p>
+      </div>
+    </div>
+
+  </main>
+
+</div>
+
+<div class="modal" *ngIf="modalWindow">
+  <app-modal></app-modal>
+</div>
